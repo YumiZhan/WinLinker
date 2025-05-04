@@ -1,0 +1,81 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+  xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+    <Package
+        Id="YuminZhan.WinLinker"
+        Language="1033"
+        Manufacturer="Yumin Zhan"
+        Name="WinLinker"
+        Scope="perUser"
+        UpgradeCode="{28A48691-97AF-4EF5-AEBD-824F5C698928}"
+        Version="1.0.0"
+    >
+        <SummaryInformation Comments="WinLinker provides handy GUI for creating hard/symbolic/junction links on Microsoft Windows" Description="WinLinker" />
+
+        <!-- Embed the cabinets in the product -->
+        <MediaTemplate EmbedCab="yes" />
+
+        <ui:WixUI Id="WixUI_InstallDir" />
+
+        <!-- Show licence when installing -->
+        <WixVariable Id="WixUILicenseRtf" Value="$(var.LicensePath)" />
+
+        <!-- Define install directory -->
+        <StandardDirectory Id="PerUserProgramFilesFolder">
+            <Directory Id="INSTALLFOLDER" Name="WinLinker" />
+        </StandardDirectory>
+
+        <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+        <ComponentGroup Id="MainComponents">
+           <Files Directory="INSTALLFOLDER" Include="!(bindpath.ToBeHarvested)\**" />
+            <Component Id="StartMenuShortcut" Guid="{39a63ef0-63d1-4b32-b3cc-2e7323f346b2}">
+                <Shortcut Directory="StartMenuFolder" Subdirectory="Programs" Name="WinLinker" Target="[INSTALLFOLDER]WinLinker.exe" WorkingDirectory="INSTALLFOLDER" />
+            </Component>
+            <Component Id="FileMenuItem" Guid="{69b873d1-1aee-4ddd-9653-79c04db1268a}">
+                <RegistryKey Key="Software\Classes\*\shell\WinLinker" Root="HKMU">
+                    <RegistryValue Name="icon" Type="string" Value="[INSTALLFOLDER]WinLinker.exe" />
+                    <RegistryValue Name="MuiVerb" Type="string" Value="Create Link" />
+                    <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+                    <RegistryKey Key="command">
+                        <RegistryValue Type="expandable" Value="[INSTALLFOLDER]WinLinker.exe -d &quot;%L&quot;" />
+                    </RegistryKey>
+                </RegistryKey>
+            </Component>
+            <Component Id="DirectoryMenuItem" Guid="{23cdb829-174b-4da1-9086-44bb3cb7c3f5}">
+                <RegistryKey Key="Software\Classes\Directory\shell\WinLinker" Root="HKMU">
+                    <RegistryValue Name="icon" Type="string" Value="[INSTALLFOLDER]WinLinker.exe" />
+                    <RegistryValue Name="MuiVerb" Type="string" Value="Create Link" />
+                    <RegistryValue Name="MultiSelectModel" Type="string" Value="Single" />
+                    <RegistryKey Key="command">
+                        <RegistryValue Type="expandable" Value="[INSTALLFOLDER]WinLinker.exe -d &quot;%L&quot;" />
+                    </RegistryKey>
+                </RegistryKey>
+            </Component>
+            <Component Id="DriectoryBackgroundMenuItem" Guid="{394d758e-e6f3-4985-b686-494a144c4503}">
+                <RegistryKey Key="Software\Classes\Directory\Background\shell\WinLinker" Root="HKMU">
+                    <RegistryValue Name="icon" Type="string" Value="[INSTALLFOLDER]WinLinker.exe" />
+                    <RegistryValue Name="MuiVerb" Type="string" Value="Create Link" />
+                    <RegistryValue Name="SubCommands" Type="string" Value="" />
+                    <RegistryKey Key="shell">
+                        <RegistryKey Key="CreateHere">
+                            <RegistryValue Name="MuiVerb" Type="string" Value="Create Here" />
+                            <RegistryKey Key="command">
+                                <RegistryValue Type="expandable" Value="[INSTALLFOLDER]WinLinker.exe -f &quot;%W&quot;" />
+                            </RegistryKey>
+                        </RegistryKey>
+                        <RegistryKey Key="LinkHere">
+                            <RegistryValue Name="MuiVerb" Type="string" Value="Link Here" />
+                            <RegistryKey Key="command">
+                                <RegistryValue Type="expandable" Value="[INSTALLFOLDER]WinLinker.exe -d &quot;%W&quot;" />
+                            </RegistryKey>
+                        </RegistryKey>
+                    </RegistryKey>
+                </RegistryKey>
+            </Component>
+        </ComponentGroup>
+
+        <Feature Id="MainFeature" Title="WinLinker" Level="1">
+            <ComponentGroupRef Id="MainComponents" />
+        </Feature>
+    </Package>
+</Wix>

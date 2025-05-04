@@ -1,0 +1,11 @@
+*
+
+!installer
+!installer/license.rtf
+!installer/winlinker_machine.wxs
+!installer/winlinker_user.wxs
+
+!.gitignore
+!VERSION
+!winlinker.ico
+!winlinker.spec

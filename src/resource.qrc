@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>winlinker.svg</file>
+  </qresource>
+</RCC>
