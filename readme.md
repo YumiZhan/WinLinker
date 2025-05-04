@@ -1,37 +1,26 @@
 # WinLinker
 
-WinLinker provides handy GUI for creating hard/symbolic/junction links on Microsoft Windows.
+## Features
 
-## License Notice
-
-WinLinker is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-WinLinker is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this program.  If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
+WinLinker provides user-friendly GUI on Microsoft Windows, allowing users to create hard/symbolic/junction links via the context menu of the File Explorer or the Desktop.
 
 ## Usage
 
 1. Right-click the mouse on
-   * a selected file on the File Explorer
-   * a selected folder on the File Explorer
-   * the background of the File Explorer
+   * a selected file
+   * a selected folder
+   * the background of the File Explorer or the Desktop
 2. Select "Show more options" (only on the Windows 11)
-3. Select "Create Link" on the menu
-4. Select "Create Here"[^1] or "Link Here"[^2] on the submenu (only if you have right-clicked the mouse on the background of the File Explorer in step 1)
-5. Edit path to the destination of the link (under the label "Destination") by
-   - typing in the textbox
-   - clicking the "File" button to select a file
-   - clicking the "Folder" button to select a folder
+3. Select "Create Link"
+4. Select "Create Here"[^1] or "Link Here"[^2] (only if you have right-clicked the mouse on the background in step 1)
+5. Edit path to the destination of the link (under the label "Destination")
 6. Edit properties of the entrance of the link (under the label "Entrance")
-   - Edit name of the link by typing in the text box under the label "Name"
-   - Select the type of the link in the combobox under the label "Name"
+   - Edit name of the link (under the label "Name")
+   - Select the type of the link
      - hard[^3]
      - symbolic[^4]
      - junction[^5]
-   - Edit path to the folder where the link is placed (under the label "Folder") by
-     - typing in the textbox
-     - clicking the "Select" button to select a folder
+   - Edit path to the folder where the link is placed (under the label "Folder")
 7. Click "Create" button
 
 ## Build
@@ -75,8 +64,17 @@ wix build -arch x64 -bindpath "ToBeHarvested=../WinLinker" -d "LicensePath=build
 wix build -arch x64 -bindpath "ToBeHarvested=../WinLinker" -d "LicensePath=build/installer/license.rtf" -ext WixToolset.UI.wixext build/installer/winlinker_user.wxs -out build/installer/WinLinkerUserSetup_<version>.msi
 ```
 
-Replace `<version>` with actual version, such as `v1.0.0`, the installer will be placed in directory `build/installer`.
+> Replace `<version>` with actual version, such as `v1.0.0`
 
+The installer will be placed in directory `build/installer`.
+
+## License Notice
+
+WinLinker is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+WinLinker is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
 
 [^1]: Create a link on the current folder by default
 
