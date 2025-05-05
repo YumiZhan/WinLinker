@@ -9,7 +9,7 @@
         UpgradeCode="{28A48691-97AF-4EF5-AEBD-824F5C698928}"
         Version="1.0.0"
     >
-        <SummaryInformation Comments="WinLinker provides handy GUI for creating hard/symbolic/junction links on Microsoft Windows" Description="WinLinker" />
+        <SummaryInformation Comments="WinLinker provides user-friendly GUI for creating hard/symbolic/junction links on Microsoft Windows" Description="WinLinker" />
 
         <!-- Embed the cabinets in the product -->
         <MediaTemplate EmbedCab="yes" />
