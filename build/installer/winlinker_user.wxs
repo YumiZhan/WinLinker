@@ -7,9 +7,11 @@
         Name="WinLinker"
         Scope="perUser"
         UpgradeCode="{28A48691-97AF-4EF5-AEBD-824F5C698928}"
-        Version="1.0.0"
+        Version="1.1.0"
     >
         <SummaryInformation Comments="WinLinker provides user-friendly GUI for creating hard/symbolic/junction links on Microsoft Windows" Description="WinLinker" />
+
+        <MajorUpgrade AllowDowngrades="yes" Schedule="afterInstallInitialize" />
 
         <!-- Embed the cabinets in the product -->
         <MediaTemplate EmbedCab="yes" />
@@ -27,7 +29,7 @@
         <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
 
         <ComponentGroup Id="MainComponents">
-           <Files Directory="INSTALLFOLDER" Include="!(bindpath.ToBeHarvested)\**" />
+            <Files Directory="INSTALLFOLDER" Include="!(bindpath.ToBeHarvested)\**" />
             <Component Id="StartMenuShortcut" Guid="{39a63ef0-63d1-4b32-b3cc-2e7323f346b2}">
                 <Shortcut Directory="StartMenuFolder" Subdirectory="Programs" Name="WinLinker" Target="[INSTALLFOLDER]WinLinker.exe" WorkingDirectory="INSTALLFOLDER" />
             </Component>
