@@ -24,9 +24,9 @@ class Ui_WinLinker(object):
     def setupUi(self, WinLinker):
         if not WinLinker.objectName():
             WinLinker.setObjectName(u"WinLinker")
-        WinLinker.resize(720, 388)
-        WinLinker.setMinimumSize(QSize(400, 388))
-        WinLinker.setMaximumSize(QSize(16777215, 388))
+        WinLinker.resize(720, 414)
+        WinLinker.setMinimumSize(QSize(400, 414))
+        WinLinker.setMaximumSize(QSize(16777215, 414))
         icon = QIcon()
         icon.addFile(u":/icon/winlinker.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         WinLinker.setWindowIcon(icon)
@@ -90,7 +90,7 @@ class Ui_WinLinker(object):
         self.groupBox_Entrance.setObjectName(u"groupBox_Entrance")
         sizePolicy1.setHeightForWidth(self.groupBox_Entrance.sizePolicy().hasHeightForWidth())
         self.groupBox_Entrance.setSizePolicy(sizePolicy1)
-        self.groupBox_Entrance.setMinimumSize(QSize(0, 127))
+        self.groupBox_Entrance.setMinimumSize(QSize(0, 153))
         self.groupBox_Entrance.setFlat(True)
         self.gridLayout_Entrance = QGridLayout(self.groupBox_Entrance)
         self.gridLayout_Entrance.setObjectName(u"gridLayout_Entrance")
@@ -101,14 +101,9 @@ class Ui_WinLinker(object):
 
         self.gridLayout_Entrance.addWidget(self.pushButton_SelectEntranceFolder, 4, 1, 1, 1)
 
-        self.comboBox_LinkType = QComboBox(self.groupBox_Entrance)
-        self.comboBox_LinkType.setObjectName(u"comboBox_LinkType")
-        sizePolicy.setHeightForWidth(self.comboBox_LinkType.sizePolicy().hasHeightForWidth())
-        self.comboBox_LinkType.setSizePolicy(sizePolicy)
-        self.comboBox_LinkType.setMinimumSize(QSize(0, 22))
-        self.comboBox_LinkType.setMaximumSize(QSize(16777215, 22))
+        self.verticalSpacer_3 = QSpacerItem(0, 6, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
-        self.gridLayout_Entrance.addWidget(self.comboBox_LinkType, 1, 1, 1, 1)
+        self.gridLayout_Entrance.addItem(self.verticalSpacer_3, 2, 0, 1, 2)
 
         self.label_EntranceLocation = QLabel(self.groupBox_Entrance)
         self.label_EntranceLocation.setObjectName(u"label_EntranceLocation")
@@ -121,11 +116,31 @@ class Ui_WinLinker(object):
 
         self.gridLayout_Entrance.addWidget(self.lineEdit_EntranceName, 1, 0, 1, 1)
 
+        self.label_ActionResult = QLabel(self.groupBox_Entrance)
+        self.label_ActionResult.setObjectName(u"label_ActionResult")
+        self.label_ActionResult.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.gridLayout_Entrance.addWidget(self.label_ActionResult, 6, 0, 1, 3)
+
+        self.label_EntranceName = QLabel(self.groupBox_Entrance)
+        self.label_EntranceName.setObjectName(u"label_EntranceName")
+
+        self.gridLayout_Entrance.addWidget(self.label_EntranceName, 0, 0, 1, 1)
+
         self.lineEdit_EntranceFolder = QLineEdit(self.groupBox_Entrance)
         self.lineEdit_EntranceFolder.setObjectName(u"lineEdit_EntranceFolder")
         self.lineEdit_EntranceFolder.setMinimumSize(QSize(0, 21))
 
         self.gridLayout_Entrance.addWidget(self.lineEdit_EntranceFolder, 4, 0, 1, 1)
+
+        self.comboBox_LinkType = QComboBox(self.groupBox_Entrance)
+        self.comboBox_LinkType.setObjectName(u"comboBox_LinkType")
+        sizePolicy.setHeightForWidth(self.comboBox_LinkType.sizePolicy().hasHeightForWidth())
+        self.comboBox_LinkType.setSizePolicy(sizePolicy)
+        self.comboBox_LinkType.setMinimumSize(QSize(0, 22))
+        self.comboBox_LinkType.setMaximumSize(QSize(16777215, 22))
+
+        self.gridLayout_Entrance.addWidget(self.comboBox_LinkType, 1, 1, 1, 1)
 
         self.pushButton_Create = QPushButton(self.groupBox_Entrance)
         self.pushButton_Create.setObjectName(u"pushButton_Create")
@@ -137,14 +152,9 @@ class Ui_WinLinker(object):
 
         self.gridLayout_Entrance.addWidget(self.pushButton_Create, 1, 2, 4, 1)
 
-        self.verticalSpacer_3 = QSpacerItem(0, 6, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        self.verticalSpacer = QSpacerItem(0, 6, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
-        self.gridLayout_Entrance.addItem(self.verticalSpacer_3, 2, 0, 1, 2)
-
-        self.label_EntranceName = QLabel(self.groupBox_Entrance)
-        self.label_EntranceName.setObjectName(u"label_EntranceName")
-
-        self.gridLayout_Entrance.addWidget(self.label_EntranceName, 0, 0, 1, 1)
+        self.gridLayout_Entrance.addItem(self.verticalSpacer, 5, 0, 1, 3)
 
 
         self.verticalLayout.addWidget(self.groupBox_Entrance)
@@ -177,10 +187,10 @@ class Ui_WinLinker(object):
 #if QT_CONFIG(tooltip)
         self.lineEdit_EntranceName.setToolTip(QCoreApplication.translate("WinLinker", u"Name of the link", None))
 #endif // QT_CONFIG(tooltip)
+        self.label_EntranceName.setText(QCoreApplication.translate("WinLinker", u"Name", None))
 #if QT_CONFIG(tooltip)
         self.lineEdit_EntranceFolder.setToolTip(QCoreApplication.translate("WinLinker", u"Path to the folder where the the link is placed", None))
 #endif // QT_CONFIG(tooltip)
         self.pushButton_Create.setText(QCoreApplication.translate("WinLinker", u"Create", None))
-        self.label_EntranceName.setText(QCoreApplication.translate("WinLinker", u"Name", None))
     # retranslateUi
 
